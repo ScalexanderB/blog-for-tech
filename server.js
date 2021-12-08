@@ -11,7 +11,7 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const sess = {
-    secret: process.env.DB_SECRET,
+    secret: 'Super secret secret',
     cookie: {},
     resave: false,
     saveUninitialized: true,
@@ -31,8 +31,8 @@ app.set('view engine', 'handlebars');
 app.use(session(sess));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
-app.use(express.urlendcoded({
-    extended: true
+app.use(express.urlencoded({
+    extended: false
 }));
 app.use(routes);
 
